@@ -16,9 +16,20 @@ const images = [
     },
 ];
 
-const galleryRef = document.querySelector("#gallery");
-let markUp = "";
-images.forEach((elem) => {
-    markUp += `<li><img src="${elem.url}" alt="${elem.alt}"></li>`;
-});
-galleryRef.insertAdjacentHTML("afterbegin", markUp);
+// const galleryRef = document.querySelector("#gallery");
+// let markUp = "";
+// images.forEach((elem) => {
+//     markUp += `<li><img src="${elem.url}" alt="${elem.alt}"></li>`;
+// });
+// galleryRef.insertAdjacentHTML("afterbegin", markUp);
+
+//
+
+const galleryList = document.querySelector("#gallery");
+const createGallery = ({ url, alt }) =>
+    `<li class="list__item"><img src="${url}" alt="${alt}" width = 300 class="list__item--img"></li>`;
+const createMarkup = images.reduce(
+    (acc, item) => acc + createGallery(item),
+    ""
+);
+galleryList.insertAdjacentHTML("afterbegin", createMarkup);
